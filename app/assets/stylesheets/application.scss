@@ -1,1 +1,20 @@
+@font-face {
+  font-family: "Lexend";
+  src: url("Lexend.ttf") format("truetype");
+}
+
+$primary: #CB4036;
+$secondary: #FFC327;
+$font-family-sans-serif: Lexend;
+
+$container-max-widths: (
+  xxl: 1360px
+);
+
+.fs-sm {
+  font-size: 12px;
+  line-height: 15px;
+}
+
 @import "bootstrap";
+@import "custom/sign_up";

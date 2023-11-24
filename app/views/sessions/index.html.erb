@@ -1,0 +1,39 @@
+<div class="sign-up">
+  <div class="container h-100 px-xxl-0">
+    <div class="col-3 h-100">
+      <div class="h-100 d-flex flex-column justify-content-center">
+        <div class="pb-5">
+          <%= image_tag "cooky.svg", height: "75", alt: "cooky logo" %>
+          <h6 class="mt-2">Recipes from all over the world</h6>
+        </div>
+        <div class="text-primary mt-5">
+          <%= form_with do |form| %>
+            <div class="mb-3">
+              <%= form.label :email_address, class: "form-label mb-0" %>
+              <%= form.email_field :email_address, class: "form-control rounded-pill", required: true %>
+            </div>
+            <div class="mb-4">
+              <%= form.label :password, class: "form-label mb-0" %>
+              <div class="input-group">
+                <%= form.password_field :password, class: "form-control border-end-0 rounded-pill rounded-end-0", required: true %>
+                <span class="input-group-text border-start-0 rounded-pill rounded-start-0 bg-transparent">
+                  <%= button_tag type: :button, class: "border-0 bg-transparent" do %>
+                    <%= image_tag "eye.svg", alt: "show password" %>
+                  <% end %>
+                </span>
+              </div>
+              <div class="fs-sm text-secondary text-end mt-2">Forgot password</div>
+            </div>
+            <div class="mb-4">
+              <%= form.submit "Log In", class: "btn btn-primary rounded-pill w-100" %>
+            </div>
+            <div class="text-start fs-6">
+              <div class="text-dark">Not yet registered?</span>
+              <%= link_to "Sign up now!", "#", class: "fw-bold text-uppercase" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
