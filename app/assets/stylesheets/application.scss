@@ -6,15 +6,16 @@
 $primary: #CB4036;
 $secondary: #FFC327;
 $font-family-sans-serif: Lexend;
+$grid-gutter-width: 1.3rem;
 
 $container-max-widths: (
   xxl: 1360px
 );
 
-.fs-sm {
-  font-size: 12px;
-  line-height: 15px;
+.form-control,
+.input-group-text {
+  background-color: #EFEFEF !important;
 }
 
 @import "bootstrap";
-@import "custom/sign_up";
+@import "custom/sign_in";

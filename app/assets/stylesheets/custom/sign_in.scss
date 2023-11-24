@@ -1,0 +1,43 @@
+.sign-in {
+  background: linear-gradient(to right, #FFFFFF 35%, rgba(255,255,255,0)), url("sign_in/desktop_bg.png");
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+
+  .header {
+    .logo {
+      height: 75px;
+    }
+  }
+
+  form {
+    .fs-sm {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    background: url("sign_in/mobile_bg.png");
+    background-position: top right;
+    background-repeat: no-repeat;
+
+    .header {
+      .logo {
+        height: 56px;
+      }
+
+      .description {
+        font-size: 10px;
+        line-height: 12.5px;
+      }
+    }
+
+    .form {
+      font-size: 12px !important;
+      line-height: 15px !important;
+    }
+  }
+}
