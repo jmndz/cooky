@@ -3,6 +3,11 @@
   src: url("Lexend.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "PaytoneOne";
+  src: url("PaytoneOne.ttf") format("truetype");
+}
+
 $primary: #CB4036;
 $secondary: #FFC327;
 $font-family-sans-serif: Lexend;
@@ -12,10 +17,5 @@ $container-max-widths: (
   xxl: 1360px
 );
 
-.form-control,
-.input-group-text {
-  background-color: #EFEFEF !important;
-}
-
 @import "bootstrap";
-@import "custom/sign_in";
+@import "custom/*";

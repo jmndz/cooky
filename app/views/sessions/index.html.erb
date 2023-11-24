@@ -4,7 +4,7 @@
       <div class="h-100 d-flex flex-column justify-content-center">
         <div class="header d-flex flex-column align-items-center align-items-md-start pb-5">
           <%= image_tag "cooky.svg", class:"logo", alt: "cooky logo" %>
-          <h6 class="mt-2">Recipes from all over the world</h6>
+          <h6 class="description mt-2">Recipes from all over the world</h6>
         </div>
         <div class="form text-primary mt-5 px-4 px-sm-0">
           <%= form_with do |form| %>
@@ -13,14 +13,12 @@
               <%= form.email_field :email_address, class: "form-control rounded-pill", required: true %>
             </div>
             <div class="mb-4">
-              <%= form.label :password, class: "form-label mb-1" %>
-              <div class="input-group">
-                <%= form.password_field :password, class: "form-control border-end-0 rounded-pill rounded-end-0", required: true %>
-                <span class="input-group-text border-start-0 rounded-pill rounded-start-0">
-                  <%= button_tag type: :button, class: "border-0" do %>
-                    <%= image_tag "eye.svg", alt: "show password" %>
-                  <% end %>
-                </span>
+              <label for="password" class="form-label mb-1">Password</label>
+              <div class="password">
+                <input type="password" class="form-control rounded-pill" id="password">
+                <%= button_tag type: :button, class: "icon" do %>
+                  <%= image_tag "eye.svg", alt: "show password" %>
+                <% end %>
               </div>
               <div class="fs-sm text-secondary text-end mt-2">Forgot password</div>
             </div>
@@ -29,7 +27,7 @@
             </div>
             <div class="text-center text-sm-start pt-5 pt-sm-0">
               <div class="text-dark">Not yet registered?</span>
-              <%= link_to "Sign up now!", "#", class: "fw-bold text-uppercase" %>
+              <%= link_to "Sign up now!", registrations_path, class: "fw-bold text-uppercase" %>
             </div>
           <% end %>
         </div>
