@@ -1,0 +1,34 @@
+.navbar {
+  .logo-wrapper {
+    padding: 6.5px 0;
+
+    .logo {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(12%) hue-rotate(103deg) brightness(105%) contrast(105%);
+      height: 51px;
+    }
+  }
+
+  .settings {
+    height: 24px;
+    width: 24px;
+  }
+
+  .dropdown-menu {
+    border-radius: 12px;
+  }
+
+  @media (max-width: 576px) {
+    .logo-wrapper {
+      padding: 0;
+      
+      .logo {
+        height: 31.08px;
+      }
+    }
+
+    .settings {
+      height: 20px;
+      height: 20px;
+    }
+  }
+}

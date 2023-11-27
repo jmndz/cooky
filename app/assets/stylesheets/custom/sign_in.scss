@@ -1,7 +1,6 @@
 .sign-in {
   background: linear-gradient(to right, #FFFFFF 35%, rgba(255,255,255,0)), url("sign_in/desktop_bg.png");
   background-position: right;
-  background-size: contain;
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
@@ -20,8 +19,9 @@
   }
 
   @media (max-width: 576px) {
-    background: url("sign_in/mobile_bg.png");
-    background-position: top right;
+    background: linear-gradient(rgba(255,255,255, 0.2), rgba(255,255,255, 0.2)), url("sign_in/mobile_bg.png");
+    background-size: 352.06px;
+    background-position: top -15.06px left 119px;
     background-repeat: no-repeat;
 
     .header {

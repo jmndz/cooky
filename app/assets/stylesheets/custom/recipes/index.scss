@@ -1,0 +1,52 @@
+.recipes-home {
+  background: linear-gradient(rgba(255,255,255, 0.2), rgba(255,255,255, 0.2)), url("sign_in/mobile_bg.png");
+  background-position: top -20% right -1%;
+  background-repeat: no-repeat;
+
+  h2, h4 {
+    font-family: PaytoneOne;
+  }
+  
+  h2 {
+    font-size: 32px;
+    line-height: 44.67px;
+  }
+  
+  h4 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  
+  .nav-pills {
+    --bs-nav-pills-border-radius: 0%;
+  }
+  
+  .nav-link {
+    color: #929292;
+    font-weight: 600;
+  }
+  
+  .recipe-collection {
+    .recipe-image {
+      border-radius: 12px;
+    }
+  
+    h4 {
+      font-family: Lexend;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    background: none;
+
+    h2 {
+      font-size: 20px;
+      line-height: 27.92px;
+    }
+    
+    h4, .nav-link {
+      font-size: 14px;
+      line-height: 17.5px;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<div class="recipes-home">
+  <div class="container my-md-5 py-5 px-3 px-xxl-0">
+    <h2 class="mb-2 mb-sm-3">Hi, Bada Lee!</h2>
+    <h4 class="text-primary">This is your Recipe Feed</h4>
+  
+    <div class="d-flex justify-content-between mt-5" id="recipes-tab" role="tablist">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <button class="nav-link active" id="own-recipes-tab" data-bs-toggle="pill" data-bs-target="#own-recipes" type="button" role="tab" aria-controls="own-recipes-tab" aria-selected="true">
+            Own Recipes
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="others-recipes-tab" data-bs-toggle="pill" data-bs-target="#others-recipes" type="button" role="tab" aria-controls="others-recipes-tab" aria-selected="true">
+            Others' Recipes
+          </button>
+        </li>
+      </ul>
+  
+      <%= button_tag "New Recipe", type: :button, class: "btn btn-primary rounded-pill px-4 d-none d-sm-block" %>
+    </div>
+  
+    <div class="tab-content" id="recipes-tabContent">
+      <div class="tab-pane fade show active" id="own-recipes" role="tabpanel" aria-labelledby="own-recipes-tab">
+        <div class="recipe-collection row py-5 gy-3">
+          <% 12.times do |count| %>
+            <div class="col-12 col-md-3">
+              <div class="d-flex flex-column justify-content-center">
+                <%= image_tag "https://placehold.co/325x150", class: "recipe-image", alt: "recipe image" %>
+                <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2">Special Halo-halo</h4>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="others-recipes" role="tabpanel" aria-labelledby="others-recipes-tab">
+        <div class="recipe-collection row py-5 gy-3">
+          <% 12.times do |count| %>
+            <div class="col-12 col-md-3">
+              <div class="d-flex flex-column justify-content-center">
+                <%= image_tag "https://placehold.co/325x150", class: "recipe-image", alt: "recipe image" %>
+                <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2">Tteokbokki (Spicy Rice Cakes)</h4>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
