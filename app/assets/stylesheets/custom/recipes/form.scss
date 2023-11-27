@@ -1,5 +1,13 @@
 .new-recipe {
   background: linear-gradient(to right, #FFFFFF 53%, rgba(255,255,255,0)), url("recipes/new_desktop_bg.png");
+}
+
+.edit-recipe {
+  background: linear-gradient(to right, #FFFFFF 53%, rgba(255,255,255,0)), url("recipes/edit_desktop_bg.png");
+}
+
+.new-recipe,
+.edit-recipe {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -51,6 +59,8 @@
       }
 
       .footer {
+        display: flex;
+        
         .btn {
           width: 100%;
         }
