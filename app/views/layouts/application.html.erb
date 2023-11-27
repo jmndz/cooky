@@ -10,8 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <%= render "layouts/common/navbar" %>
-    <%= yield %>
+  <body>
+    <main class="d-flex flex-column vh-100">
+      <%= render "layouts/common/navbar" %>
+      <%= yield %>
+    </main>
+    <%= render "layouts/common/dialog" %>
   </body>
 </html>

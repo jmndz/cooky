@@ -50,3 +50,33 @@
     opacity: 0;
   }
 }
+
+dialog {
+  width: 322.57px;
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  border-radius: 12px;
+
+  .title {
+    font-family: PaytoneOne;
+    font-size: 24px;
+    line-height: 33.5px;
+  }
+
+  .footer {
+    display: flex;
+    width: 100%;
+
+    span {
+      width: 100%;
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+dialog::backdrop {
+  opacity: 0.65;
+  background-color: #000;
+  box-shadow: 0 0.275rem 1.25rem rgba(11, 15, 25, 0.05), 0 0.25rem 0.5625rem rgba(11, 15, 25, 0.03);
+}
