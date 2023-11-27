@@ -1,0 +1,107 @@
+.recipe {
+  height: 100%;
+  width: 100%;
+
+  .recipe-img {
+    height: 520px;
+
+    .name {
+      font-family: PaytoneOne;
+      font-size: 64px;
+      line-height: 89.34px;
+    }
+  
+    h2 {
+      font-family: PaytoneOne;
+      font-size: 32px;
+      line-height: 44.67px;
+    }
+  
+    .return {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 24px;
+      line-height: 30px;
+  
+      .icon {
+        height: 36px;
+        width: 32px;
+      }
+    }
+
+    .servings-icon,
+    .cooking-time-icon {
+      .icon {
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    .edit-btn,
+    .delete-btn {
+      width: 106px;
+
+      .icon {
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    .content {
+      h3 {
+        font-size: 24px;
+        line-height: 30px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .recipe-img {
+      height: 198px;
+
+      .name {
+        font-size: 24px;
+        line-height: 33.5px;
+      }
+
+      h2 {
+        font-size: 20px;
+        line-height: 27.92px;
+      }
+
+      .return {
+        font-size: 14px;
+        line-height: 17.5px;
+        
+        .icon {
+          height: 16px;
+          width: 16px;
+        }
+      }
+
+      .author,
+      .servings,
+      .cooking-time {
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      .servings,
+      .cooking-time {
+        .icon {
+          height: 12px;
+          width: 12px;
+        }
+      }
+
+      .content {
+        h3 {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
