@@ -1,0 +1,64 @@
+.new-recipe {
+  background: linear-gradient(to right, #FFFFFF 53%, rgba(255,255,255,0)), url("recipes/new_desktop_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+
+  .return {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 17.5px;
+    color: #757575;
+    text-decoration: none;
+
+    .icon {
+      height: 16px;
+      width: 16px;
+      filter: brightness(0) saturate(100%) invert(54%) sepia(1%) saturate(2167%) hue-rotate(323deg) brightness(83%) contrast(76%);
+    }
+  }
+
+  h2 {
+    font-family: PaytoneOne;
+  }
+
+  .form {
+    color: $primary;
+
+    .form-label {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+      opacity: 1 !important;
+    }
+
+    trix-editor {
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    background: none;
+
+    .form {
+      .form-label {
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      .footer {
+        .btn {
+          width: 100%;
+        }
+      }
+
+      trix-editor {
+        height: 169.25px;
+      }
+    }
+  }
+}

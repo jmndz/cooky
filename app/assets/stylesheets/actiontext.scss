@@ -25,7 +25,7 @@ trix-toolbar {
     height: 14px;
 
     &.trix-active {
-      background: rgba($primary, 0.5);
+      background: rgba(#CB4036, 0.5);
     }
   }
 
@@ -64,5 +64,11 @@ trix-toolbar {
     height: 12px;
     width: 12px;
     top: 2px;
+  }
+
+  @media (max-width: 576px) {
+    .trix-button-row {
+      justify-content: start;
+    }
   }
 }
