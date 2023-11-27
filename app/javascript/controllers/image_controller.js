@@ -6,9 +6,9 @@ export default class extends Controller {
 
   upload(event) {
     const uploadedFileName = event.currentTarget.files[0]?.name;
-
+    
+    // display file name
     if (uploadedFileName) {
-      // display file name
       this.fileNameTarget.textContent = uploadedFileName;
     }
   }
