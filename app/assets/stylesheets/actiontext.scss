@@ -1,0 +1,68 @@
+@import "trix";
+
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
+
+.trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment, .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.trix-content action-text-attachment .attachment {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+trix-toolbar {
+  padding: 8px 0; 
+  .trix-button {
+    height: 14px;
+
+    &.trix-active {
+      background: rgba($primary, 0.5);
+    }
+  }
+
+  .trix-button-group:not(:first-child) {
+    margin-left: 0;
+  }
+
+  .trix-button-group {
+    margin-bottom: 0;
+  }
+
+  .trix-button, .trix-button-group {
+    border: none !important;
+  }
+
+  .trix-button--icon{
+    font-size: 7px;
+  }
+
+  .trix-button--icon::before {
+    height: 14px;
+    width: 14px;
+  }
+
+  .trix-button--icon-attach::before { 
+    background-image: url("toolbar/image.svg");
+  }
+
+  .trix-button--icon-decrease-nesting-level::before { background-image: url("toolbar/decrease_nesting_level.svg"); }
+  .trix-button--icon-increase-nesting-level::before { background-image: url("toolbar/increase_nesting_level.svg"); }
+  .trix-button--icon-underline::before { background-image: url("toolbar/underline.svg"); }
+
+  .trix-button--icon-underline::before,
+  .trix-button--icon-decrease-nesting-level::before,
+  .trix-button--icon-increase-nesting-level::before {
+    height: 12px;
+    width: 12px;
+    top: 2px;
+  }
+}
