@@ -1,62 +1,71 @@
 <div class="recipe">
-  <div class="recipe-img" style="background: url(<%= "https://placehold.co/1920x520" %>)">
+  <div class="recipe-img mb-3" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(255,255,255,0)) , url(<%= url_for(@recipe.image) %>);">
     <div class="container py-3 py-sm-5 h-100 d-flex">
       <div class="d-flex flex-column h-100 flex-grow-1 mx-3 mx-xxl-0">
         <div class="d-flex justify-content-between">
-          <%= link_to "#", class: "return text-white" do %>
+          <%= link_to recipes_path(active_tab: @recipe.user == current_user ? "own_recipes" : "others_recipes"), class: "return text-white" do %>
             <%= image_tag "arrow-left.svg", class: "icon d-block", alt: "return" %>
             Back to Feed
           <% end %>
 
-          <div class="d-flex d-sm-none justify-content-end align-items-end gap-2">
-            <%= link_to "#", class: "edit-btn-mobile btn btn-outline-light rounded-circle" do %>
-              <%= image_tag "pen.svg", class: "d-block", alt: "edit icon" %>
-            <% end %>
-            <%= link_to "#", class: "delete-btn-mobile btn btn-outline-primary rounded-circle" do %>
-              <%= image_tag "trash.svg", class: "d-block", alt: "delete icon" %>
-            <% end %>
-          </div>
+          <% if @recipe.user == current_user || current_user.admin? %>
+            <div class="d-flex d-sm-none justify-content-end align-items-end gap-2">
+              <%= link_to edit_recipe_path, class: "edit-btn-mobile btn btn-outline-light rounded-circle" do %>
+                <%= image_tag "pen.svg", class: "d-block", alt: "edit icon" %>
+              <% end %>
+              <%= link_to recipe_path(@recipe), class: "delete-btn-mobile btn btn-outline-primary rounded-circle", 
+                data: { turbo_method: :delete, turbo_confirm: "#{@recipe.name}" } do %>
+                <%= image_tag "trash.svg", class: "d-block", alt: "delete icon" %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <div class="d-flex mt-auto w-100">
           <div class="col-12">
-            <div class="name text-white">Steamed Salmon</div>
-            <p class="author text-white mb-2">by Bee Yin Low</p>
+            <div class="name text-white"><%= @recipe.name %></div>
+
+            <% if @recipe.user != current_user %>
+              <p class="author text-white mb-2">by <%= @recipe.user.name %></p>
+            <% end %>
             <div class="d-flex gap-4 text-secondary">
               <div class="servings d-flex align-items-center gap-2 me-3">
                 <%= image_tag "utensils.svg", class: "icon d-block", alt: "servings icon" %>
-                4 Servings
+                <%= pluralize(@recipe.number_of_servings, "Servings") %>
               </div>
               <div class="preparation-time d-flex align-items-center gap-2">
                 <%= image_tag "stopwatch.svg", class: "icon d-block", alt: "cooking time icon" %>
-                30 Minutes
+                <%= preparation_time_format(@recipe.preparation_time) %>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="d-none d-sm-flex justify-content-end align-items-end gap-3">
-        <%= link_to "#", class: "edit-btn btn btn-outline-light rounded-pill d-flex justify-content-between align-items-center gap-2" do %>
-          Edit <%= image_tag "pen.svg", class: "icon d-block", alt: "edit icon" %>
-        <% end %>
-        <%= link_to "#", class: "delete-btn btn btn-outline-primary rounded-pill d-flex justify-content-between align-items-center gap-2" do %>
-          Delete <%= image_tag "trash.svg", class: "icon d-block", alt: "delete icon" %>
-        <% end %>
-      </div>
+      <% if @recipe.user == current_user || current_user.admin? %>
+        <div class="d-none d-sm-flex justify-content-end align-items-end gap-3">
+          <%= link_to edit_recipe_path, class: "edit-btn btn btn-outline-light rounded-pill d-flex justify-content-between align-items-center gap-2" do %>
+            Edit <%= image_tag "pen.svg", class: "icon d-block", alt: "edit icon" %>
+          <% end %>
+          <%= link_to recipe_path(@recipe), class: "delete-btn btn btn-outline-primary rounded-pill d-flex justify-content-between align-items-center gap-2", 
+            data: { turbo_method: :delete, turbo_confirm: "#{@recipe.name}" } do %>
+            Delete <%= image_tag "trash.svg", class: "icon d-block", alt: "delete icon" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-    <div class="content">
-      <div class="container py-4 py-sm-5 my-3">
-        <div class="row">
-          <div class="col-12 col-sm-4">
-            <h2 class="text-primary">Ingredients</h2>
-            <div class="col-12 py-4">
-              <h3>Main Ingredients</h3>
-            </div>
+  </div>
+  <div class="content mx-3 mx-xxl-0">
+    <div class="container py-4 py-sm-5">
+      <div class="row">
+        <div class="col-12 col-sm-4">
+          <h2 class="text-primary">Ingredients</h2>
+          <div id="ingredients-content" class="col-12 py-4">
+            <%= @recipe.ingredients %>
           </div>
-          <div class="col-12 col-sm-8">
-            <h2 class="text-primary">Procedure</h2>
-            <div class="col-12 py-4">
-              <h3>Step 1 - Prep Salmon</h3>
-            </div>
+        </div>
+        <div class="col-12 col-sm-8">
+          <h2 class="text-primary">Procedure</h2>
+          <div id="procedure-content" class="col-12 py-4">
+            <%= @recipe.procedure %>
           </div>
         </div>
       </div>
