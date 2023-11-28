@@ -1,9 +1,29 @@
 .new-recipe {
-  background: linear-gradient(to right, #FFFFFF 53%, rgba(255,255,255,0)), url("recipes/new_desktop_bg.png");
+  background: linear-gradient(to right, $white 53%, rgba(255,255,255,0)), url("recipes/new_desktop_bg.png");
 }
 
 .edit-recipe {
-  background: linear-gradient(to right, #FFFFFF 53%, rgba(255,255,255,0)), url("recipes/edit_desktop_bg.png");
+  background: linear-gradient(to right, $white 53%, rgba(255,255,255,0)), url("recipes/edit_desktop_bg.png");
+}
+
+.dark-mode {
+  .new-recipe {
+    background: linear-gradient(to right, $dark 53%, rgba(0,0,0,0.6)), url("recipes/new_desktop_bg.png");
+  }
+  
+  .edit-recipe {
+    background: linear-gradient(to right, $dark 53%, rgba(255,255,255,0)), url("recipes/edit_desktop_bg.png");
+  }
+
+  .new-recipe,
+  .edit-recipe {
+    .return {
+      color: $white;
+      .icon {
+        filter: none;
+      }
+    }
+  }
 }
 
 .new-recipe,

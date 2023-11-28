@@ -1,3 +1,19 @@
+.dark-mode {
+  .navbar {
+    .dropdown-menu {
+      background: #1E1E1E;
+      
+      .dropdown-item {
+        color: #FFFFFF;
+
+        .icon {
+          filter: brightness(0) saturate(100%) invert(100%) sepia(10%) saturate(6810%) hue-rotate(186deg) brightness(116%) contrast(106%);
+        }
+      }
+    }
+  }
+}
+
 .navbar {
   .logo-wrapper {
     padding: 6.5px 0;

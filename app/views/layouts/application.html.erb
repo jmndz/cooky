@@ -9,8 +9,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
+  <!-- light-mode will be the default theme if cookies[:theme] is empty -->
+  <body class="<%= cookies[:theme] || "light-mode" %>">
     <main class="d-flex flex-column vh-100">
       <%= render "layouts/common/navbar" %>
       <%= yield %>

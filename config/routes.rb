@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :sessions
   resources :registrations
   resources :recipes
+  resource :themes, only: :update
 end
