@@ -1,0 +1,31 @@
+.footer-buttons {
+  display: none;
+
+  @media (max-width: 576px) {
+    display: block;
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+  
+      .btn {
+        height: 45px;
+        width: 45px;
+        position: fixed;
+        right: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      #back-to-top {
+        bottom: 4rem;
+      }
+  
+      #new-recipe {
+        bottom: 0.5rem;
+      }
+    }
+  }
+}

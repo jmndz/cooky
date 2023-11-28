@@ -81,6 +81,15 @@
         }
       }
 
+      .edit-btn-mobile,
+      .delete-btn-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 38px;
+        height: 38px;
+      }
+
       .author,
       .servings,
       .preparation-time {
