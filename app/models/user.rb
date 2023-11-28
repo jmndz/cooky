@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Associations
+  has_many :recipes, dependent: :destroy
+
   # Validations
   validates :name, presence: true
-  validates :agreed_to_terms_and_conditions, :agreed_to_privacy_and_policy, inclusion: [true, false]
+  validates :agreed_to_terms_and_conditions, :agreed_to_privacy_and_policy, acceptance: {message: "You must agree before submitting"}
 end

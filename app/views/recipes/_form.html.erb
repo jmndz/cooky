@@ -1,4 +1,4 @@
-<%= form_with class: "form", data: { controller: "trix" } do |form| %>
+<%= form_with model: recipe, url: form_path, class: "form", data: { controller: "trix" } do |form| %>
   <div class="col-12 mb-3">
     <label for="name" class="form-label mb-1">Recipe Name</label>
     <%= form.text_field :name, class: "form-control rounded-pill", required: true %>
