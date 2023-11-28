@@ -2,6 +2,10 @@
   .recipes-home {
     .recipe-feed-caption {
       color: $secondary;
+
+      @media (max-width: 576px) {
+        color: $primary;
+      }
     }
 
     .nav-link {

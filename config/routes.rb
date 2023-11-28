@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  root "home#index"
 
-  root "sessions#index"
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
-  resources :sessions
-  resources :registrations
   resources :recipes
   resource :themes, only: :update
 end

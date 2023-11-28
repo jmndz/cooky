@@ -8,21 +8,23 @@
         </div>
 
         <div class="form text-primary mt-5 px-4 px-sm-0">
-          <%= form_with do |form| %>
+          <%= form_with model: @user, url: user_session_path do |form| %>
             <div class="mb-3">
-              <%= form.label :email_address, class: "form-label mb-1" %>
-              <%= form.email_field :email_address, class: "form-control rounded-pill", required: true %>
+              <%= form.label :email, class: "form-label mb-1" %>
+              <%= form.email_field :email, class: "form-control rounded-pill", required: true %>
             </div>
 
             <div class="mb-4">
               <label for="password" class="form-label mb-1">Password</label>
               <div class="password">
-                <input type="password" class="form-control rounded-pill" id="password">
-                <%= button_tag type: :button, class: "icon" do %>
+                <%= form.password_field :password, class: "form-control rounded-pill" %>
+                <%= button_tag type: :button, class: "icon rounded-circle" do %>
                   <%= image_tag "eye.svg", alt: "show password" %>
                 <% end %>
               </div>
-              <div class="fs-sm text-secondary text-end mt-2">Forgot password</div>
+              <div class="text-end">
+                <%= link_to "Forgot password", "#", class: "fs-sm text-secondary text-decoration-none mt-2" %>
+              </div>
             </div>
 
             <div class="mb-5 mb-sm-4">
@@ -31,7 +33,7 @@
 
             <div class="text-center text-sm-start pt-5 pt-sm-0">
               <div class="text-dark">Not yet registered?</span>
-              <%= link_to "Sign up now!", registrations_path, class: "fw-bold text-uppercase" %>
+              <%= link_to "Sign up now!", new_user_registration_path, class: "fw-bold text-uppercase" %>
             </div>
           <% end %>
         </div>

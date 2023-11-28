@@ -1,23 +1,23 @@
-<div class="recipes-home">
+<div class="recipes-home" data-controller="recipes--home">
   <div class="container my-md-5 py-5 px-3 px-xxl-0">
-    <h2 class="mb-2 mb-sm-3">Hi, Bada Lee!</h2>
-    <h4 class="recipe-feed-caption">This is your Recipe Feed</h4>
+    <h2 class="mb-2 mb-sm-3">Hi, <%= current_user.name %>!</h2>
+    <h4 class="recipe-feed-caption">This is your Recipe Collection</h4>
   
     <div class="d-flex justify-content-between mt-5" id="recipes-tab" role="tablist">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <button class="nav-link active" id="own-recipes-tab" data-bs-toggle="pill" data-bs-target="#own-recipes" type="button" role="tab" aria-controls="own-recipes-tab" aria-selected="true">
+          <button data-recipes--home-target="ownRecipesTab" data-action="click->recipes--home#selectRecipesTab" class="nav-link active" id="own-recipes-tab" data-bs-toggle="pill" data-bs-target="#own-recipes" type="button" role="tab" aria-controls="own-recipes-tab" aria-selected="true">
             Own Recipes
           </button>
         </li>
         <li class="nav-item">
-          <button class="nav-link" id="others-recipes-tab" data-bs-toggle="pill" data-bs-target="#others-recipes" type="button" role="tab" aria-controls="others-recipes-tab" aria-selected="true">
+          <button data-recipes--home-target="othersRecipesTab" data-action="click->recipes--home#selectRecipesTab" class="nav-link" id="others-recipes-tab" data-bs-toggle="pill" data-bs-target="#others-recipes" type="button" role="tab" aria-controls="others-recipes-tab" aria-selected="true">
             Others' Recipes
           </button>
         </li>
       </ul>
   
-      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary rounded-pill px-4 d-none d-sm-block" %>
+      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary rounded-pill px-4 d-none d-sm-block", data: { recipes__home_target: "newRecipeBtn" } %>
     </div>
   
     <div class="tab-content" id="recipes-tabContent">

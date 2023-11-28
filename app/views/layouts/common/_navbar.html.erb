@@ -1,33 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary px-3">
-  <div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center w-100">
-      <div class="logo-wrapper"><%= image_tag "cooky.svg", class: "logo", alt: "cooky logo" %></div>
+<% if user_signed_in? %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary px-3">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <div class="logo-wrapper">
+          <%= link_to root_path do %>
+            <%= image_tag "cooky.svg", class: "logo", alt: "cooky logo" %>
+          <% end %>
+        </div>
 
-      <div class="nav dropdown">
-        <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-          <%= image_tag "cog.svg", class: "settings", alt: "settings" %>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li>
-            <%= link_to themes_path(theme: cookies[:theme] == "light-mode" ? "dark-mode" : "light-mode"), class: "dropdown-item d-flex align-items-center", data: { turbo_method: :patch } do %>
-              <% if cookies[:theme] == "light-mode" %>
-                <%= image_tag "moon.svg", class: "d-block", size: "14x14", alt: "dark-mode" %>
-                <p class="mb-0 ms-2">Dark Mode</p>
-              <% else %>
-                <%= image_tag "sun.svg", class: "icon d-block", size: "14x14", alt: "light-mode" %>
-                <p class="mb-0 ms-2">Light Mode</p>
+        <div class="nav dropdown">
+          <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+            <%= image_tag "cog.svg", class: "settings", alt: "settings" %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%= link_to themes_path(theme: cookies[:theme] == "light-mode" ? "dark-mode" : "light-mode"), class: "dropdown-item d-flex align-items-center", data: { turbo_method: :patch } do %>
+                <% if cookies[:theme] == "light-mode" %>
+                  <%= image_tag "moon.svg", class: "d-block", size: "14x14", alt: "dark-mode" %>
+                  <p class="mb-0 ms-2">Dark Mode</p>
+                <% else %>
+                  <%= image_tag "sun.svg", class: "icon d-block", size: "14x14", alt: "light-mode" %>
+                  <p class="mb-0 ms-2">Light Mode</p>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-          <li><hr class="dropdown-divider mx-3"></li>
-          <li>
-            <%= link_to "#", class: "dropdown-item d-flex align-items-center" do %>
-              <%= image_tag "sign-out.svg", class: "icon d-block", size: "14x14", alt: "sign-out" %>
-              <p class="mb-0 ms-2">Log out</p>
-            <% end %>
-          </li>
-        </ul>
+            </li>
+            <li><hr class="dropdown-divider mx-3"></li>
+            <li>
+              <%= link_to destroy_user_session_path, class: "dropdown-item d-flex align-items-center", data: { turbo_method: :delete } do %>
+                <%= image_tag "sign-out.svg", class: "icon d-block", size: "14x14", alt: "sign-out" %>
+                <p class="mb-0 ms-2">Log out</p>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<% end %>
