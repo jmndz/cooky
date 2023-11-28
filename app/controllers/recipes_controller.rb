@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find_by_id(params[:id])
+    @recipe = Recipe.find_by_slug(params[:id])
   end
 
   def recipe_params

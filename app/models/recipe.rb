@@ -1,4 +1,8 @@
 class Recipe < ApplicationRecord
+  # Create slug for recipe
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   # Associations
   belongs_to :user
 
