@@ -11,8 +11,8 @@ class Recipe < ApplicationRecord
   has_rich_text :procedure
 
   # Add image
-  has_one_attached :recipe_image, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
 
   # Validations
-  validates_presence_of :name, :number_of_servings, :preparation_time, :ingredients, :procedure, :recipe_image
+  validates_presence_of :name, :number_of_servings, :preparation_time, :ingredients, :procedure, :image
 end

@@ -1,15 +1,15 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :user_restriction, only: [:edit, :update, :destroy]
 
   def new
     @recipe = Recipe.new
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.new(recipe_params.merge(user: current_user))
 
-    # Redirect user to recipe#show page if recipe creation is successful, otherwise, redirect back to new recipe page
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
@@ -18,6 +18,20 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @own_recipes_pagy, @own_recipes = 
+      pagy(
+        current_user.recipes, 
+        items: 16, 
+        page_param: :own_recipes_page, 
+        params: { active_tab: "own_recipes" }
+      )
+    @others_recipes_pagy, @others_recipes = 
+      pagy(
+        Recipe.where.not(user: current_user), 
+        items: 16, 
+        page_param: :others_recipes_page, 
+        params: { active_tab: "others_recipes" }
+      )
   end
 
   def show
@@ -38,6 +52,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by_slug(params[:id])
   end
 
+  def user_restriction
+    if @recipe.user != current_user && !current_user.admin?
+      redirect_to recipe_path(@recipe)
+    end
+  end
+
   def recipe_params
     params.require(:recipe)
       .permit(
@@ -46,9 +66,7 @@ class RecipesController < ApplicationController
         :preparation_time,
         :ingredients,
         :procedure,
-        :recipe_image
-      ).merge(
-        user: current_user
+        :image
       )
   end
 end

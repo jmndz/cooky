@@ -6,7 +6,7 @@
   <div class="col-12 d-flex gap-3 mb-3">
     <div class="w-100">
       <%= form.label :number_of_servings, class: "form-label mb-2" %>
-      <%= form.number_field :number_of_servings, min: 0, value: 0, class: "form-control rounded-pill", required: true %>
+      <%= form.number_field :number_of_servings, min: 0, value: recipe.number_of_servings || 0, class: "form-control rounded-pill", required: true %>
     </div>
     <div class="w-100 d-flex flex-column justify-content-end">
       <%= form.label :preparation_time, class: "form-label mb-2" %>
@@ -20,7 +20,7 @@
       <div class="open-file-btn">
         <%= button_tag "Browse", type: :button, class: "btn btn-primary btn-sm px-3 rounded-pill" %>
       </div>
-      <%= form.file_field :recipe_image, accept: 'image/jpeg, image/png, image/jpg', class: "col-12 btn btn-primary rounded-pill", data: { action: "change->image#upload" } %>
+      <%= form.file_field :image, accept: 'image/jpeg, image/png, image/jpg', class: "col-12 btn btn-primary rounded-pill", data: { action: "change->image#upload" } %>
     </div>
   </div>
   <div class="col-12 mb-3">

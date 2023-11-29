@@ -1,17 +1,21 @@
-<div class="recipes-home" data-controller="recipes--home">
-  <div class="container my-md-5 py-5 px-3 px-xxl-0">
+<div class="recipes-home px-3 px-xxl-0" data-controller="recipes--home">
+  <div class="container my-md-5 py-5">
     <h2 class="mb-2 mb-sm-3">Hi, <%= current_user.name %>!</h2>
     <h4 class="recipe-feed-caption">This is your Recipe Collection</h4>
   
-    <div class="d-flex justify-content-between mt-5" id="recipes-tab" role="tablist">
+    <div class="d-flex justify-content-center justify-content-sm-between mt-5" id="recipes-tab" role="tablist">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <button data-recipes--home-target="ownRecipesTab" data-action="click->recipes--home#selectRecipesTab" class="nav-link active" id="own-recipes-tab" data-bs-toggle="pill" data-bs-target="#own-recipes" type="button" role="tab" aria-controls="own-recipes-tab" aria-selected="true">
+          <button data-recipes--home-target="ownRecipesTab" data-action="click->recipes--home#selectRecipesTab" 
+            class="nav-link <%= "active" if params[:active_tab].in?(["own_recipes", nil]) %>" id="own-recipes-tab" 
+            data-bs-toggle="pill" data-bs-target="#own-recipes" type="button" role="tab" aria-controls="own-recipes-tab" aria-selected="true">
             Own Recipes
           </button>
         </li>
         <li class="nav-item">
-          <button data-recipes--home-target="othersRecipesTab" data-action="click->recipes--home#selectRecipesTab" class="nav-link" id="others-recipes-tab" data-bs-toggle="pill" data-bs-target="#others-recipes" type="button" role="tab" aria-controls="others-recipes-tab" aria-selected="true">
+          <button data-recipes--home-target="othersRecipesTab" data-action="click->recipes--home#selectRecipesTab" 
+            class="nav-link <%= "active" if params[:active_tab] == "others_recipes" %>" id="others-recipes-tab" 
+            data-bs-toggle="pill" data-bs-target="#others-recipes" type="button" role="tab" aria-controls="others-recipes-tab" aria-selected="true">
             Others' Recipes
           </button>
         </li>
@@ -19,30 +23,38 @@
 
       <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary rounded-pill px-4 d-none d-sm-block", data: { recipes__home_target: "newRecipeBtn" } %>
     </div>
-  
+
     <div class="tab-content" id="recipes-tabContent">
-      <div class="tab-pane fade show active" id="own-recipes" role="tabpanel" aria-labelledby="own-recipes-tab">
+      <div class="tab-pane fade <%= "show active" if params[:active_tab].in?(["own_recipes", nil]) %>" id="own-recipes" role="tabpanel" aria-labelledby="own-recipes-tab">
         <div class="recipe-collection row py-5 gy-3">
-          <% 12.times do |count| %>
-            <div class="col-12 col-md-3">
-              <div class="d-flex flex-column justify-content-center">
-                <%= image_tag "https://placehold.co/325x150", class: "recipe-image", alt: "recipe image" %>
-                <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2">Special Halo-halo</h4>
+          <% @own_recipes.each do |recipe| %>
+            <%= link_to recipe_path(recipe), class: "col-12 col-md-3 text-decoration-none" do %>
+              <div class="recipe-container mx-auto">
+                <div class="recipe-image" style="background: url(<%= url_for(recipe.image) %>) no-repeat center"></div>
+                <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2"><%= recipe.name %></h4>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
+
+        <div class="d-flex justify-content-center justify-content-sm-end">
+          <%== pagy_bootstrap_nav(@own_recipes_pagy) if @own_recipes.present? %>
+        </div>
       </div>
-      <div class="tab-pane fade" id="others-recipes" role="tabpanel" aria-labelledby="others-recipes-tab">
+      <div class="tab-pane fade <%= "show active" if params[:active_tab] == "others_recipes" %>" id="others-recipes" role="tabpanel" aria-labelledby="others-recipes-tab">
         <div class="recipe-collection row py-5 gy-3">
-          <% 12.times do |count| %>
-            <div class="col-12 col-md-3">
-              <div class="d-flex flex-column justify-content-center">
-                <%= image_tag "https://placehold.co/325x150", class: "recipe-image", alt: "recipe image" %>
-                <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2">Tteokbokki (Spicy Rice Cakes)</h4>
+          <% @others_recipes.each do |recipe| %>
+            <%= link_to recipe_path(recipe), class: "col-12 col-md-3 text-decoration-none" do %>
+              <div class="recipe-container mx-auto">
+                <div class="recipe-image" style="background: url(<%= url_for(recipe.image) %>) no-repeat center"></div>
+                <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2"><%= recipe.name %></h4>
               </div>
-            </div>
+            <% end %>
           <% end %>
+        </div>
+
+        <div class="d-flex justify-content-center justify-content-sm-end">
+          <%== pagy_bootstrap_nav(@others_recipes_pagy) if @others_recipes.present? %>
         </div>
       </div>
     </div>
