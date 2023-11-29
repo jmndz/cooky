@@ -1,4 +1,4 @@
-<div class="sign-in">
+<div class="sign-in" data-controller="password">
   <div class="container h-100 px-3 px-xxl-0">
     <div class="col-12 col-md-5 col-lg-4 col-xl-3 h-100">
       <div class="h-100 d-flex flex-column justify-content-center">
@@ -18,7 +18,7 @@
               <label for="password" class="form-label mb-1">Password</label>
               <div class="password">
                 <%= form.password_field :password, class: "form-control rounded-pill" %>
-                <%= button_tag type: :button, class: "icon rounded-circle" do %>
+                <%= button_tag type: :button, class: "icon rounded-circle", data: { action: "click->password#showPassword" } do %>
                   <%= image_tag "eye.svg", alt: "show password" %>
                 <% end %>
               </div>
