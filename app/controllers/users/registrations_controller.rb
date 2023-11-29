@@ -4,10 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    # Similar to User.new(sign_up_params)
     build_resource(sign_up_params)
 
-    # if user parameters are valid, it will save, sign in, and redirect the user to the recipes homepage
     if resource.valid?
       resource.save
       sign_in resource

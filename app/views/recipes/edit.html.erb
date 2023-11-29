@@ -1,7 +1,7 @@
-<div class="edit-recipe">
+<div class="edit-recipe" data-controller="recipes--update">
   <div class="container py-4 py-sm-5">
     <div class="col-12 col-sm-6 py-3 px-3 px-xxl-0">
-      <%= link_to recipes_path, class: "return fw-semibold" do %>
+      <%= link_to recipe_path(@recipe), class: "return fw-semibold" do %>
         <%= image_tag "arrow-left.svg", class: "icon d-block", alt: "return icon" %>
         Back to Feed
       <% end %>

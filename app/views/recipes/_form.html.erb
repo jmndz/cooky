@@ -36,8 +36,16 @@
     <% if action_name == "new" %>
       <%= form.submit "Publish Recipe", class: "btn btn-primary rounded-pill" %>
     <% else %>
-      <%= link_to "Cancel edit", "#", class: "btn bg-transparent border-0 rounded-pill px-4 me-3 #{transparent_button}" %>
-      <%= form.submit "Save changes", class: "btn btn-primary rounded-pill px-3" %>
+      <%= link_to "Cancel edit", recipe_path(@recipe), class: "btn bg-transparent border-0 rounded-pill px-4 me-3 #{transparent_button}",
+        data: {
+          action: "click->recipes--update#showCancelModal"
+        } 
+      %>
+      <%= form.submit "Save changes", class: "btn btn-primary rounded-pill px-3", 
+        data: {
+          action: "click->recipes--update#saveChanges"
+        } 
+      %>
     <% end %>
   </div>
 <% end %>

@@ -6,7 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate(auth_options)
 
-    # checks if the user is active and allowed to sign in
     if resource && resource.active_for_authentication?
       redirect_to recipes_path
     else

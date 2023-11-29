@@ -1,59 +1,63 @@
 import { Controller } from "@hotwired/stimulus"
 import { FetchRequest } from "@rails/request.js"
 
-// Connects to data-controller="recipes--destroy"
+// Connects to data-controller="recipes--update"
 export default class extends Controller {
   initialize() {
     this.dialog = document.getElementById("turbo-confirm");
   }
 
-  showDestroyModal(event) {
+  async saveChanges(event) {
     event.preventDefault();
 
-    const noBtn = document.querySelector(".no-btn"),
-          yesBtn = document.querySelector(".yes-btn");
+    const form = event.currentTarget.closest("form"),
+          formData = new FormData(form),
+          okBtn = this.dialog.querySelector(".ok-btn");
+
+    this.action = form.action
     
-    this.recipeName = event.currentTarget.dataset.recipename;
-    this.action = event.currentTarget.href;
-
-    this.changeDialogContent(this.dialog, "delete");
-
-    this.dialog.showModal();
-
-    return new Promise(() => {
-      noBtn.addEventListener("click", () => this.cancelDeletionRequest(), { once: true });
-      yesBtn.addEventListener("click", () => this.confirmDeletion(), { once: true });
+    // save changes made to recipe
+    const request = new FetchRequest("patch", this.action, { 
+      body: formData,
+      responseKind: "json" 
     });
-  }
-
-  async confirmDeletion() {
-    const okBtn = document.querySelector(".ok-btn");
-
-    // proceed with recipe deletion
-    const request = new FetchRequest("delete", this.action, { responseKind: "json" });
 
     const response = await request.perform();
     const data = await response.json;
 
     if (data.success) {
-      this.changeDialogContent(this.dialog, "delete-confirmation");
+      this.changeDialogContent(this.dialog, "save-success");
 
       this.dialog.showModal();
 
       return new Promise(() => {
-        okBtn.addEventListener("click", () => this.redirectUserToHome(), { once: true });
+        okBtn.addEventListener("click", () => this.redirectUserToRecipePage(), { once: true });
       });
     } else {
-      this.cancelDeletionRequest();
+      this.dialog.close();
     }
   }
 
-  cancelDeletionRequest() {
-    this.dialog.close();
+  showCancelModal(event) {
+    event.preventDefault();
+
+    const noBtn = document.querySelector(".no-btn"),
+          yesBtn = document.querySelector(".yes-btn");
+
+    this.action = event.currentTarget.href;
+
+    this.changeDialogContent(this.dialog, "cancel");
+
+    this.dialog.showModal();
+
+    return new Promise(() => {
+      noBtn.addEventListener("click", () => this.dialog.close());
+      yesBtn.addEventListener("click", () => this.redirectUserToRecipePage());
+    });
   }
 
-  redirectUserToHome() {
-    Turbo.visit(window.location.origin, { action: "replace" });
+  redirectUserToRecipePage() {
+    Turbo.visit(this.action, { action: "replace" });
   }
 
   changeDialogContent(dialog, action) {
@@ -74,7 +78,10 @@ export default class extends Controller {
     // hide content for other actions
     contentSpans.forEach(span => {
       if (span.classList.contains(action)) {
-        span.querySelector(".recipe-name").textContent = this.recipeName;
+        if (action == "save-success") {
+          span.querySelector(".recipe-name").textContent = this.recipeName;
+        }
+
         span.classList.remove("d-none");
       } else {
         span.classList.add("d-none");
@@ -82,7 +89,7 @@ export default class extends Controller {
     });
 
     // show button depending on the action
-    if (action == "delete") {
+    if (action == "cancel") {
       yesOrNoBtn.classList.remove("d-none");
       okBtn.classList.add("d-none");
     } else {

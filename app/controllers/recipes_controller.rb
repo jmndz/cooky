@@ -20,14 +20,14 @@ class RecipesController < ApplicationController
   def index
     @own_recipes_pagy, @own_recipes = 
       pagy(
-        current_user.recipes, 
+        current_user.recipes.order(created_at: :desc), 
         items: 16, 
         page_param: :own_recipes_page, 
         params: { active_tab: "own_recipes" }
       )
     @others_recipes_pagy, @others_recipes = 
       pagy(
-        Recipe.where.not(user: current_user), 
+        Recipe.where.not(user: current_user).order(created_at: :desc), 
         items: 16, 
         page_param: :others_recipes_page, 
         params: { active_tab: "others_recipes" }
@@ -44,6 +44,11 @@ class RecipesController < ApplicationController
   end
 
   def update
+    if @recipe.update(recipe_params)
+      render json: { success: true }
+    else
+      render json: { success: false }
+    end
   end
 
   def destroy
