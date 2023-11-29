@@ -8,27 +8,27 @@
     </div>
     <div class="content mb-auto">
       <span class="delete">
-        Are you sure you want to <span class="text-primary">DELETE</span> the recipe for Steamed Salmon?
+        Are you sure you want to <span class="text-primary">DELETE</span> the recipe for <span class="recipe-name"></span>?
         <br><br>
         There is no turning back.
       </span>
       <span class="delete-confirmation d-none">
-        The recipe for Steamed Salmon has been deleted.
+        The recipe for <span class="recipe-name"></span> has been deleted.
       </span>
       <span class="cancel d-none">
         Are you sure you want to cancel editing this recipe? Your progress will not be saved.
       </span>
       <span class="save-success d-none">
-        The details of Steamed Salmon Recipe has been saved.
+        The details of <span class="recipe-name"></span> Recipe has been saved.
       </span>
     </div>
     <div class="footer pb-2">
-      <span class="delete cancel d-flex">
-        <%= link_to "No", "#", class: "btn rounded-pill bg-transparent border-0 #{transparent_button}" %>
-        <%= link_to "Yes", "#", class: "btn btn-primary rounded-pill" %>
+      <span class="yes-or-no-btn d-flex">
+        <%= button_tag "No", type: :button, class: "no-btn btn rounded-pill bg-transparent border-0 #{transparent_button}" %>
+        <%= button_tag "Yes", type: :button, class: "yes-btn btn btn-primary rounded-pill" %>
       </span>
-      <span class="delete-confirmation save-success d-none">
-        <%= link_to "Ok", "#", class: "btn btn-primary rounded-pill" %>
+      <span class="ok-btn d-none">
+        <%= button_tag "Ok", type: :button, class: "btn btn-primary rounded-pill" %>
       </span>
     </div>
   </form>

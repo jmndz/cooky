@@ -35,6 +35,9 @@ class RecipesController < ApplicationController
   end
 
   def show
+    unless @recipe.present?
+      redirect_to recipes_path
+    end
   end
 
   def edit
@@ -44,6 +47,11 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    if @recipe.destroy
+      render json: { success: true }
+    else
+      render json: { success: false}
+    end
   end
 
   private

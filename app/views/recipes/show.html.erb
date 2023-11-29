@@ -1,4 +1,4 @@
-<div class="recipe">
+<div class="recipe" data-controller="recipes--destroy">
   <div class="recipe-img mb-3" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(255,255,255,0)) , url(<%= url_for(@recipe.image) %>);">
     <div class="container py-3 py-sm-5 h-100 d-flex">
       <div class="d-flex flex-column h-100 flex-grow-1 mx-3 mx-xxl-0">
@@ -14,7 +14,7 @@
                 <%= image_tag "pen.svg", class: "d-block", alt: "edit icon" %>
               <% end %>
               <%= link_to recipe_path(@recipe), class: "delete-btn-mobile btn btn-outline-primary rounded-circle", 
-                data: { turbo_method: :delete, turbo_confirm: "#{@recipe.name}" } do %>
+                data: { recipeName: @recipe.name, action: "click->recipes--destroy#showDestroyModal" } do %>
                 <%= image_tag "trash.svg", class: "d-block", alt: "delete icon" %>
               <% end %>
             </div>
@@ -46,7 +46,7 @@
             Edit <%= image_tag "pen.svg", class: "icon d-block", alt: "edit icon" %>
           <% end %>
           <%= link_to recipe_path(@recipe), class: "delete-btn btn btn-outline-primary rounded-pill d-flex justify-content-between align-items-center gap-2", 
-            data: { turbo_method: :delete, turbo_confirm: "#{@recipe.name}" } do %>
+            data: { recipeName: @recipe.name, action: "click->recipes--destroy#showDestroyModal" } do %>
             Delete <%= image_tag "trash.svg", class: "icon d-block", alt: "delete icon" %>
           <% end %>
         </div>
