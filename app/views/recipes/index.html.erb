@@ -30,7 +30,7 @@
           <% @own_recipes.each do |recipe| %>
             <%= link_to recipe_path(recipe), class: "col-12 col-md-3 text-decoration-none" do %>
               <div class="recipe-container mx-auto">
-                <div class="recipe-image" style="background: url(<%= url_for(recipe.image) %>) no-repeat center"></div>
+                <div class="recipe-image" style="background: url(<%= url_for(recipe.image) if recipe.image.present? %>) no-repeat center"></div>
                 <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2"><%= recipe.name %></h4>
               </div>
             <% end %>
@@ -46,7 +46,7 @@
           <% @others_recipes.each do |recipe| %>
             <%= link_to recipe_path(recipe), class: "col-12 col-md-3 text-decoration-none" do %>
               <div class="recipe-container mx-auto">
-                <div class="recipe-image" style="background: url(<%= url_for(recipe.image) %>) no-repeat center"></div>
+                <div class="recipe-image" style="background: url(<%= url_for(recipe.image) if recipe.image.present? %>) no-repeat center"></div>
                 <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2"><%= recipe.name %></h4>
               </div>
             <% end %>

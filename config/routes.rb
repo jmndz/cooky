@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   resources :recipes
   resource :themes, only: :update
+  resources :home, only: :index
 end
