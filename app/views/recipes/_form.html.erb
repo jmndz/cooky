@@ -20,7 +20,7 @@
       <div class="open-file-btn">
         <%= button_tag "Browse", type: :button, class: "btn btn-primary btn-sm px-3 rounded-pill" %>
       </div>
-      <%= form.file_field :image, accept: 'image/jpeg, image/png, image/jpg', class: "col-12 btn btn-primary rounded-pill", data: { action: "change->image#upload" } %>
+      <%= form.file_field :image, accept: 'image/jpeg, image/png, image/jpg', class: "col-12 btn btn-primary rounded-pill", data: { action: "change->image#upload" }, required: action_name == "new" ? true : false %>
     </div>
   </div>
   <div class="col-12 mb-3">
