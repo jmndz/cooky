@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  namespace :admin do
+    resources :recipes
+  end
+
   resources :recipes
   resource :themes, only: :update
 end

@@ -1,0 +1,10 @@
+<div class="admin-recipe container">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto py-4 py-sm-5 px-3 px-xxl-0">
+    <%= link_to admin_recipes_path, class: "return fw-semibold pb-4 pb-sm-5" do %>
+      <%= image_tag "arrow-left.svg", class: "icon d-block", alt: "return icon" %>
+      Back to Feed
+    <% end %>
+
+    <%= render "recipes/form", form_path: admin_recipes_path, cancel_path: "#", recipe: @recipe %>
+  </div>
+</div>

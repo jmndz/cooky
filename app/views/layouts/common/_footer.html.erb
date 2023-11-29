@@ -3,7 +3,8 @@
     <%= button_tag type: :button, id: "back-to-top", class: "btn btn-primary rounded-circle d-none", data: { action: "click->scroll-top#backToTop" } do %>
       <%= image_tag "arrow-up.svg", class: "d-block", alt: "back to top button" %>
     <% end %>
-    <%= link_to new_recipe_path, id: "new-recipe", class: "btn btn-primary rounded-circle #{"d-none" unless controller_name == "recipes" && action_name == "index"}" do %>
+    <%= link_to controller_path.include?("admin") ? new_admin_recipe_path : new_recipe_path, id: "new-recipe", 
+      class: "btn btn-primary rounded-circle #{"d-none" unless controller_name == "recipes" && action_name == "index"}" do %>
       <%= image_tag "plus.svg", class: "d-block", alt: "new recipe button" %>
     <% end %>
   </div>

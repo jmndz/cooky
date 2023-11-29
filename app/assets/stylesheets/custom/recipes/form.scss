@@ -16,7 +16,8 @@
   }
 
   .new-recipe,
-  .edit-recipe {
+  .edit-recipe,
+  .admin-recipe {
     .return {
       color: $white;
       .icon {
@@ -27,7 +28,8 @@
 }
 
 .new-recipe,
-.edit-recipe {
+.edit-recipe,
+.admin-recipe {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

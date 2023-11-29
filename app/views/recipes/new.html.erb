@@ -9,7 +9,7 @@
       <h2 class="text-primary py-4 py-sm-5 d-none d-sm-block">New Recipe</h2>
 
       <div class="py-4 py-sm-0">
-        <%= render "form", form_path: recipes_path, recipe: @recipe %>
+        <%= render "form", form_path: recipes_path, cancel_path: "#", recipe: @recipe %>
       </div>
     </div>
   </div>
