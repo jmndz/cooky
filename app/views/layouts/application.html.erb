@@ -11,7 +11,7 @@
 
     <%= favicon_link_tag "icon.png" %>
   </head>
-  <body class="<%= cookies[:theme] || "light-mode" %>">
+  <body class="<%= (cookies[:theme] || "light-mode") unless controller_path.in?(["users/registrations", "users/sessions"]) %>">
     <main class="d-flex flex-column vh-100">
       <%= render "layouts/common/navbar" %>
       <%= yield %>
