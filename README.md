@@ -34,7 +34,7 @@ Cooky is a web application where users contribute and share their own recipes.
 ## **Getting the Application**
 ### **Clone**
 ```bash
-git clone git://github.com/jmndz/cooky.git
+git clone https://github.com/jmndz/cooky.git
 ```
 
 ## **Get Started**
