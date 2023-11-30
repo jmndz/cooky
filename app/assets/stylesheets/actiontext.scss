@@ -57,6 +57,7 @@ trix-toolbar {
   .trix-button--icon-decrease-nesting-level::before { background-image: url("toolbar/decrease_nesting_level.svg"); }
   .trix-button--icon-increase-nesting-level::before { background-image: url("toolbar/increase_nesting_level.svg"); }
   .trix-button--icon-underline::before { background-image: url("toolbar/underline.svg"); }
+  .trix-button--icon-heading-1::before { background-image: url("toolbar/h1.svg"); }
 
   .trix-button--icon-underline::before,
   .trix-button--icon-decrease-nesting-level::before,

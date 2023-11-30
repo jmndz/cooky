@@ -9,6 +9,8 @@ export default class extends Controller {
     if (!(form.checkValidity() && this.emailValidation(form) && this.passwordValidation(form))){
       event.preventDefault();
       event.stopPropagation();
+      this.emailValidation(form);
+      this.passwordValidation(form);
     }
   }
 

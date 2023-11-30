@@ -25,6 +25,13 @@
       }
     }
   }
+
+  @media (max-width: 576px) {
+    .new-recipe,
+    .edit-recipe {
+      background: none;
+    }
+  }
 }
 
 .new-recipe,

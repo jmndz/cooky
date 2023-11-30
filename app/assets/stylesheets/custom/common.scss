@@ -6,6 +6,20 @@
     background: $dark;
     color: $white;
   }
+
+  .form-control,
+  .input-group-text {
+    background-color: #282828 !important;
+    border-color: #282828;
+    color: $white !important;
+  }
+
+  .upload-file {
+    background-color: #282828;
+    .file-name {
+      color: $white !important;
+    }
+  }
 }
 
 .form-control,

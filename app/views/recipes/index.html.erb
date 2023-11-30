@@ -28,7 +28,7 @@
       <div class="tab-pane fade <%= "show active" if params[:active_tab].in?(["own_recipes", nil]) %>" id="own-recipes" role="tabpanel" aria-labelledby="own-recipes-tab">
         <div class="recipe-collection row py-5 gy-3">
           <% @own_recipes.each do |recipe| %>
-            <%= link_to recipe_path(recipe), class: "col-12 col-md-3 text-decoration-none" do %>
+            <%= link_to recipe_path(recipe), class: "col-12 col-md-6 col-lg-4 col-xl-3 text-decoration-none px-0" do %>
               <div class="recipe-container mx-auto">
                 <div class="recipe-image" style="background: url(<%= url_for(recipe.image) if recipe.image.present? %>) no-repeat center"></div>
                 <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2"><%= recipe.name %></h4>
@@ -44,7 +44,7 @@
       <div class="tab-pane fade <%= "show active" if params[:active_tab] == "others_recipes" %>" id="others-recipes" role="tabpanel" aria-labelledby="others-recipes-tab">
         <div class="recipe-collection row py-5 gy-3">
           <% @others_recipes.each do |recipe| %>
-            <%= link_to recipe_path(recipe), class: "col-12 col-md-3 text-decoration-none" do %>
+            <%= link_to recipe_path(recipe), class: "col-12 col-md-6 col-lg-4 col-xl-3 text-decoration-none px-0" do %>
               <div class="recipe-container mx-auto">
                 <div class="recipe-image" style="background: url(<%= url_for(recipe.image) if recipe.image.present? %>) no-repeat center"></div>
                 <h4 class="mt-2 fw-semibold border-start border-secondary border-4 ps-2"><%= recipe.name %></h4>
