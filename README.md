@@ -15,13 +15,21 @@
   * [Server](#server)
 * [App Overview](#app-overview)
 * [Database Design](#database-design)
-* [API Documentation](#api-documentation)
 * [Testing](#testing)
 <!--te-->
 
 ## **Introduction**
 ### **Overview**
 Cooky is a web application where users contribute and share their own recipes.
+
+### Features
+- Sign up (Create account)
+- Log in
+- CRUD Recipe
+- Theme mode
+- Show password
+- Back to top
+- User Access Restriction
 
 ## **Getting the Application**
 ### **Clone**
@@ -58,7 +66,7 @@ bundle install
 ```
 
 ### Database Setup
-If you’ve cloned the repo, prepare the database and populate it with data by running the commands:
+If you’ve cloned the repo, prepare the database and populate it with data by running the following command:
 ```bash
 rails db:setup         # does db:create, db:schema:load, db:seed
 ```
@@ -71,13 +79,48 @@ rails s
 ```
 To see the application in action, open a browser window and navigate to http://localhost:3000/.
 
-You should see the sign up page.
+You should see the sign in page.
 
 ## App Overview
+Follows the **Model-View-Controller (MVC)** architecture.
+
+**Key Components**
+- Rails: Web application framework
+- ActiveRecord: ORM for database interaction
 
 ## Database Design
+![erd](https://github.com/jmndz/cooky/assets/72738882/fa610607-ca97-45dc-9443-58cda6fc2377)
 
-## API Documentation
+### ActiveRecord Models
+```rb
+class Recipe < ApplicationRecord
+  # Create slug for recipe
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+  # Add rich text field
+  has_rich_text :ingredients
+  has_rich_text :procedure
+
+  # Add image
+  has_one_attached :image, dependent: :destroy
+end
+
+```
+
+### Associations
+```rb
+class User < ApplicationRecord
+  has_many :recipes, dependent: :destroy
+end
+
+
+class Recipe < ApplicationRecord
+  belongs_to :user
+end
+```
+
+For more information on rich text and image attachment for ActiveRecord, refer to the following links: [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html), [Action Text](https://guides.rubyonrails.org/action_text_overview.html).
 
 ## Testing
 Minitest for testing models and controllers.
